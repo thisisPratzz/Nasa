@@ -26,7 +26,8 @@ const displayPicture = async (req, res) => {
       apodFromDb[0].path='/images/'+dateRequested+'.jpg';
       ParsedResponse=apodFromDb[0];
       console.log(ParsedResponse)
-      res.render('index', { ParsedResponse})
+      ParsedResponse.err=0;
+      res.render('index', { err,ParsedResponse})
 
      // res.send(apodFromDb);
     }
@@ -47,15 +48,16 @@ const displayPicture = async (req, res) => {
         console.log(data);
         ParsedResponse.path='/images/'+ParsedResponse.date+'.jpg';;
 
-        res.render('index', { ParsedResponse})
+        ParsedResponse.err=0;
+        res.render('index', {ParsedResponse})
 
       //  res.send(ParsedResponse);
 
       }
       else {
 
-
-        res.render('index', { ParsedResponse})
+        ParsedResponse.err=0;
+        res.render('index', {ParsedResponse})
 
       }
       let StoredIndb =  await Apod.create(ParsedResponse);
@@ -64,8 +66,16 @@ const displayPicture = async (req, res) => {
   
     }
   } catch (error) {
+
+
+    if(error.statusCode==400){
+      let msg=JSON.parse(error.error).msg;
+      res.send(msg)
+
+    }else {
     console.error(error);
     res.send(error);
+    }
   }
 
 
