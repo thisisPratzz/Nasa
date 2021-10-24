@@ -152,7 +152,9 @@ box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1
 <body>
     <div class="loading hide">Loading&#8230;</div>
 
-    <input type="date" id="date" name="Enter Date" onchange="handler(event)"   value="<%= ParsedResponse.date%>";>
+    <input type="date" id="date" name="Enter Date" onchange="handler(event)"   value="<%= ParsedResponse.date%>";   
+    min="1995-07-16" max="2021-10-20"
+    >
 
 
     <h1> <%= ParsedResponse.title %> </h1>

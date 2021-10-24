@@ -24,6 +24,8 @@ const displayPicture = async (req, res) => {
     });
     if (apodFromDb.length){
       apodFromDb[0].path='/images/'+dateRequested+'.jpg';
+      apodFromDb[0].date=dateRequested;
+
       ParsedResponse=apodFromDb[0];
       console.log(ParsedResponse)
       ParsedResponse.err=0;
