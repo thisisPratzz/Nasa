@@ -27,7 +27,7 @@ const displayPicture = async (req, res) => {
       ParsedResponse=apodFromDb[0];
       console.log(ParsedResponse)
       ParsedResponse.err=0;
-      res.render('index', { err,ParsedResponse})
+      res.render('index', {ParsedResponse})
 
      // res.send(apodFromDb);
     }
