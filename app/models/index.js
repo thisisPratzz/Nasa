@@ -18,7 +18,6 @@ const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-
-db.students = require("./student.model.js")(sequelize, Sequelize);
+db.apod = require("./apod.model.js")(sequelize, Sequelize);
 
 module.exports = db;
